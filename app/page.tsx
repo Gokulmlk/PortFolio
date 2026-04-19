@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import HeroBanner from "@/components/HeroBanner";
 import Hero from "@/components/Hero";
 import TechStack from "@/components/TechStack";
 import Experience from "@/components/Experience";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <HeroBanner />
       <Hero />
       <main style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px" }}>
         <TechStack />

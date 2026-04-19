@@ -11,6 +11,7 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
+
 export default function Navbar() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [scrolled, setScrolled] = useState(false);
@@ -34,18 +35,22 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       style={{
-        position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
+        position: "fixed",
+        top: 16,
+        left: 0,
+        right: 0,
+        margin: "0 auto",
         zIndex: 200,
-        width: scrolled ? "min(680px, calc(100vw - 32px))" : "min(840px, calc(100vw - 32px))",
+       width: scrolled ? "min(680px, calc(100vw - 32px))" : "min(840px, calc(100vw - 32px))",
         transition: "width 0.4s ease",
         background: "rgba(12,12,12,0.75)",
-        backdropFilter: "blur(20px) saturate(1.8)",
-        WebkitBackdropFilter: "blur(20px)",
+        backdropFilter: "blur(20px)",
         border: "1px solid var(--border)",
         borderRadius: 999,
         padding: "9px 18px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
     >
       {/* Logo */}
