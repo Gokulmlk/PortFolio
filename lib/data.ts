@@ -1,11 +1,11 @@
 // ─── SITE CONFIG ────────────────────────────────────────────────
 export const siteConfig = {
-  name: "Your Name",
+  name: "Gokul Malik",
   title: "Full Stack Web Developer",
-  tagline: "Hi, I'm Your Name",
+  tagline: "Hi, I'm Gokul",
   bio: "I build modern, interactive web applications using TypeScript, React, Next.js, Node.js, and MongoDB, with a strong emphasis on clean UI, Performance, and User Experience.",
-  email: "you@email.com",
-  github: "https://github.com/yourusername",
+  email: "gokulmlk21@gmail.com",
+  github: "https://github.com/Gokulmlk",
   linkedin: "https://linkedin.com/in/yourusername",
   twitter: "https://twitter.com/yourusername",
   instagram: "https://instagram.com/yourusername",
@@ -65,7 +65,7 @@ export const experience = [
 // ─── PROJECTS (all 8 — extracted by TinyFish) ───────────────────
 export const projects = [
   {
-    name: "DaemonDoc",
+    name: "Youtube Clone",
     description: "AI-powered platform that automatically generates and keeps GitHub READMEs in sync using webhooks, background workers, and large language models.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Redis", "BullMQ"],
     techIcons: ["react","nodejs","express","mongodb","redis","redis"],

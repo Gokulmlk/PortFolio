@@ -40,7 +40,7 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  const imageSrc = theme === "dark" ? "/night.jpg" : "/day.jpg";
+  const imageSrc = theme === "dark" ? "/night.png" : "/day.png";
 
   return (
     <section
