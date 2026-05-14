@@ -12,9 +12,21 @@ const fadeUp = (delay = 0) => ({
 });
 
 const socials = [
-  { label: "GitHub", href: siteConfig.github, img: "https://skillicons.dev/icons?i=github" },
-  { label: "Twitter", href: siteConfig.twitter, img: "https://skillicons.dev/icons?i=twitter" },
-  { label: "LinkedIn", href: siteConfig.linkedin, img: "https://skillicons.dev/icons?i=linkedin" },
+  {
+    label: "GitHub",
+    href: siteConfig.github,
+    img: "https://skillicons.dev/icons?i=github",
+  },
+  {
+    label: "Twitter",
+    href: siteConfig.twitter,
+    img: "https://skillicons.dev/icons?i=twitter",
+  },
+  {
+    label: "LinkedIn",
+    href: siteConfig.linkedin,
+    img: "https://skillicons.dev/icons?i=linkedin",
+  },
 ];
 
 export default function Hero() {
@@ -57,12 +69,13 @@ export default function Hero() {
           width: "100%",
           height: 260,
           borderRadius: 24,
-          overflow: "hidden",
+          overflow: "visible",
           position: "relative",
           border: "1px solid var(--border)",
-          marginBottom: 40,
+          marginBottom: 90,
         }}
       >
+        {/* Existing Banner */}
         <img
           src={imageSrc}
           alt="banner"
@@ -74,6 +87,7 @@ export default function Hero() {
           }}
         />
 
+        {/* Existing Overlay */}
         <div
           style={{
             position: "absolute",
@@ -84,6 +98,101 @@ export default function Hero() {
                 : "transparent",
           }}
         />
+
+        {/* Rounded Profile Button */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: -55,
+            left: 24,
+            zIndex: 20,
+          }}
+        >
+          {/* Click Me */}
+          <div
+            style={{
+              position: "absolute",
+              left: 125,
+              top: 20,
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 600,
+              whiteSpace: "nowrap",
+              animation: "moveArrow 1s infinite",
+              pointerEvents: "none",
+            }}
+          >
+            Click Me ➜
+          </div>
+
+          <div
+            onClick={() => {
+              const audio = new Audio("/click.mp3");
+              audio.play();
+
+              const img = document.getElementById(
+                "profile-switch",
+              ) as HTMLImageElement;
+
+              if (!img) return;
+
+              img.src = img.src.includes("profile1.png")
+                ? "/profile2.png"
+                : "/profile1.png";
+            }}
+            style={{
+              width: 110,
+              height: 110,
+              borderRadius: "50%",
+              overflow: "visible",
+              cursor: "pointer",
+              border: "4px solid white",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.25)",
+              background: "#fff",
+              animation: "floatOnly 2s ease-in-out infinite",
+            }}
+          >
+            <img
+              id="profile-switch"
+              src="/profile1.png"
+              alt="profile"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes moveArrow {
+            0%,
+            100% {
+              transform: translateX(0px);
+            }
+            50% {
+              transform: translateX(8px);
+            }
+          }
+
+          @keyframes floatOnly {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-4px);
+            }
+          }
+
+          @media (max-width: 768px) {
+            div[style*="bottom: -40px"] {
+              left: 50% !important;
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </div>
 
       {/* 🔥 Hero Content */}
@@ -114,7 +223,10 @@ export default function Hero() {
         </span>
       </motion.div>
 
-      <motion.p {...fadeUp(0.1)} style={{ fontSize: 16, color: "var(--muted)", marginBottom: 10 }}>
+      <motion.p
+        {...fadeUp(0.1)}
+        style={{ fontSize: 16, color: "var(--muted)", marginBottom: 10 }}
+      >
         {siteConfig.tagline}
       </motion.p>
 
@@ -131,7 +243,8 @@ export default function Hero() {
         A Full Stack <br />
         <span
           style={{
-            background: "linear-gradient(135deg, var(--accent), var(--accent2))",
+            background:
+              "linear-gradient(135deg, var(--accent), var(--accent2))",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -154,7 +267,10 @@ export default function Hero() {
       </motion.p>
 
       {/* Buttons */}
-      <motion.div {...fadeUp(0.25)} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      <motion.div
+        {...fadeUp(0.25)}
+        style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+      >
         <a
           href={siteConfig.resumeUrl}
           target="_blank"
