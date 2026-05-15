@@ -54,6 +54,19 @@ export default function Hero() {
 
   const imageSrc = theme === "dark" ? "/night.png" : "/day.png";
 
+  const badgeStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 14px",
+    margin: "0 6px",
+    borderRadius: 14,
+    border: "1px dashed var(--border)",
+    background: "var(--card)",
+    fontWeight: 700,
+    fontSize: 15,
+  };
+
   return (
     <section
       style={{
@@ -196,7 +209,8 @@ export default function Hero() {
       </div>
 
       {/* 🔥 Hero Content */}
-      <motion.div {...fadeUp(0.05)} style={{ marginBottom: 28 }}>
+      {/* 🔥 Hero Content */}
+      <div style={{ marginBottom: 18 }}>
         <span
           style={{
             display: "inline-flex",
@@ -205,7 +219,7 @@ export default function Hero() {
             background: "var(--card)",
             border: "1px solid var(--border)",
             borderRadius: 999,
-            padding: "5px 14px",
+            padding: "6px 16px",
             fontSize: 12,
             color: "var(--muted)",
           }}
@@ -221,111 +235,281 @@ export default function Hero() {
           />
           Open to work
         </span>
-      </motion.div>
-
-      <motion.p
-        {...fadeUp(0.1)}
-        style={{ fontSize: 16, color: "var(--muted)", marginBottom: 10 }}
-      >
-        {siteConfig.tagline}
-      </motion.p>
+      </div>
 
       <motion.h1
-        {...fadeUp(0.15)}
+        {...fadeUp(0.1)}
         style={{
-          fontSize: "clamp(44px, 8vw, 80px)",
+          fontSize: "clamp(36px, 6vw, 62px)",
           fontWeight: 900,
-          lineHeight: 1.03,
-          letterSpacing: "-0.04em",
-          marginBottom: 28,
+          lineHeight: 1.08,
+          letterSpacing: "-0.045em",
+          marginBottom: 24,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
         }}
       >
-        A Full Stack <br />
         <span
           style={{
-            background:
-              "linear-gradient(135deg, var(--accent), var(--accent2))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            display: "flex",
+            alignItems: "baseline",
+            gap: 10,
+            flexWrap: "wrap",
           }}
         >
-          Web Developer.
+          <span>Hi, I'm</span>
+
+          <span
+            style={{
+              textDecoration: "underline",
+              textDecorationColor: "var(--accent)",
+              textUnderlineOffset: 7,
+              textDecorationThickness: 3,
+            }}
+          >
+            Gokul
+          </span>
+        </span>
+
+        <span
+          style={{
+            color: "var(--accent)",
+            fontSize: "clamp(40px, 3vw, 28px)",
+            marginTop: 10,
+            maxWidth: 900,
+          }}
+        >
+          A Full Stack web developer.
         </span>
       </motion.h1>
 
-      <motion.p
-        {...fadeUp(0.2)}
+      <motion.div
+        {...fadeUp(0.15)}
         style={{
-          fontSize: 15,
+          fontSize: 17,
           color: "var(--muted)",
-          lineHeight: 1.75,
-          maxWidth: 520,
-          marginBottom: 40,
+          lineHeight: 2.2,
+          maxWidth: 780,
+          marginBottom: 42,
         }}
       >
-        {siteConfig.bio}
-      </motion.p>
+        I build modern, interactive web applications using
+        <span style={badgeStyle}>⚡ TypeScript</span>
+        <span style={badgeStyle}>⚛ React</span>
+        <span style={badgeStyle}>▲ Next.js</span>
+        <span style={badgeStyle}>🟢 Node.js</span>
+        <span style={badgeStyle}>🍃 MongoDB</span>
+        with a strong emphasis on clean UI, Performance, and User Experience.
+      </motion.div>
 
       {/* Buttons */}
       <motion.div
-        {...fadeUp(0.25)}
-        style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+        {...fadeUp(0.2)}
+        style={{
+          display: "flex",
+          gap: 10,
+          flexWrap: "wrap",
+          marginBottom: 30,
+        }}
       >
         <a
           href={siteConfig.resumeUrl}
           target="_blank"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            background: "var(--text)",
-            color: "var(--bg)",
-            fontWeight: 700,
-            fontSize: 13,
-            padding: "10px 22px",
-            borderRadius: 999,
-            textDecoration: "none",
-          }}
+          className="hero-btn glow-btn"
         >
-          Resume <ArrowUpRight size={13} />
+          Resume / CV <ArrowUpRight size={14} />
         </a>
 
         <a
           href={`mailto:${siteConfig.email}`}
-          style={{
-            border: "1px solid var(--border)",
-            padding: "10px 22px",
-            borderRadius: 999,
-            textDecoration: "none",
-          }}
+          className="hero-btn glow-btn secondary-btn"
         >
-          Contact
+          Get in touch
         </a>
+
+        <style jsx>{`
+          .hero-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            overflow: hidden;
+            transition: 0.35s ease;
+            z-index: 1;
+          }
+
+          .glow-btn {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+          }
+
+          .secondary-btn {
+            background: transparent;
+          }
+
+          .glow-btn::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(
+              90deg,
+              #ff0080,
+              #7928ca,
+              #0070f3,
+              #00c6ff,
+              #00ff94,
+              #ff0080
+            );
+            background-size: 300% 300%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+          }
+
+          .glow-btn::after {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: inherit;
+            background: var(--card);
+            z-index: -1;
+          }
+
+          /* Desktop Hover */
+          .glow-btn:hover::before {
+            opacity: 1;
+            animation: rgbBorder 3s linear infinite;
+          }
+
+          .glow-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+              0 0 12px rgba(255, 0, 128, 0.25),
+              0 0 24px rgba(0, 112, 243, 0.22),
+              0 0 36px rgba(0, 255, 148, 0.18);
+          }
+
+          /* Mobile Always Glow */
+          @media (max-width: 768px) {
+            .glow-btn::before {
+              opacity: 1;
+              animation: rgbBorder 3s linear infinite;
+            }
+
+            .glow-btn {
+              box-shadow:
+                0 0 12px rgba(255, 0, 128, 0.2),
+                0 0 22px rgba(0, 112, 243, 0.18),
+                0 0 30px rgba(0, 255, 148, 0.15);
+            }
+          }
+
+          @keyframes rgbBorder {
+            0% {
+              background-position: 0% 50%;
+            }
+            100% {
+              background-position: 200% 50%;
+            }
+          }
+        `}</style>
       </motion.div>
 
-      {/* Stats */}
-      <motion.div {...fadeUp(0.3)} style={{ marginTop: 50 }}>
+      {/* Socials */}
+      <div
+        style={{
+          display: "flex",
+          gap: 18,
+          marginBottom: 50,
+          fontSize: 26,
+          opacity: 0.8,
+        }}
+      >
+        {socials.map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            style={{
+              transition: "0.3s",
+            }}
+          >
+            <img
+              src={s.img}
+              alt={s.label}
+              style={{
+                width: 24,
+                height: 24,
+              }}
+            />
+          </a>
+        ))}
+      </div>
+
+      {/* Spotify Card */}
+      <div
+        style={{
+          border: "1px solid var(--border)",
+          borderRadius: 24,
+          padding: 20,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          background: "var(--card)",
+        }}
+      >
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            border: "1px solid var(--border)",
-            borderRadius: 16,
-            overflow: "hidden",
+            display: "flex",
+            gap: 16,
+            alignItems: "center",
           }}
         >
-          {stats.map((s) => (
-            <div key={s.label} style={{ padding: "18px" }}>
-              <div style={{ fontWeight: 900 }}>{s.value}</div>
-              <div style={{ fontSize: 11 }}>{s.label}</div>
+          <img
+            src="/album.jpg"
+            alt="album"
+            style={{
+              width: 62,
+              height: 62,
+              borderRadius: 16,
+              objectFit: "cover",
+            }}
+          />
+
+          <div>
+            <div
+              style={{
+                fontSize: 12,
+                color: "var(--muted)",
+                marginBottom: 4,
+              }}
+            >
+              LAST PLAYED
             </div>
-          ))}
+
+            <div style={{ fontWeight: 700 }}>No Lie</div>
+
+            <div
+              style={{
+                fontSize: 14,
+                color: "var(--muted)",
+              }}
+            >
+              Sean Paul, Dua Lipa
+            </div>
+          </div>
         </div>
 
-        <div style={{ marginTop: 10, fontSize: 12 }}>
-          <Zap size={12} /> {siteConfig.currentFocus}
-        </div>
-      </motion.div>
+        <div style={{ fontSize: 34, opacity: 0.7 }}>▶</div>
+      </div>
     </section>
   );
 }
