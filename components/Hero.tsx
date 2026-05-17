@@ -31,6 +31,7 @@ const socials = [
 
 export default function Hero() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [song, setSong] = useState<any>(null);
 
   // Sync theme
   useEffect(() => {
@@ -426,32 +427,34 @@ export default function Hero() {
       {/* Socials */}
       <div
         style={{
-          display: "flex",
-          gap: 18,
-          marginBottom: 50,
-          fontSize: 26,
-          opacity: 0.8,
+          position: "relative",
+          width: "fit-content",
         }}
       >
-        {socials.map((s) => (
-          <a
-            key={s.label}
-            href={s.href}
-            target="_blank"
-            style={{
-              transition: "0.3s",
-            }}
-          >
-            <img
-              src={s.img}
-              alt={s.label}
-              style={{
-                width: 24,
-                height: 24,
-              }}
-            />
-          </a>
-        ))}
+        {/* Hover Card */}
+
+        {/* Social Icons */}
+        <div
+          style={{
+            display: "flex",
+            gap: 18,
+            marginBottom: 50,
+            opacity: 0.8,
+          }}
+        >
+          {socials.map((s) => (
+            <a key={s.label} href={s.href} target="_blank">
+              <img
+                src={s.img}
+                alt={s.label}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Spotify Card */}
@@ -474,7 +477,7 @@ export default function Hero() {
           }}
         >
           <img
-            src="/album.jpg"
+            src={song?.image}
             alt="album"
             style={{
               width: 62,
@@ -495,7 +498,7 @@ export default function Hero() {
               LAST PLAYED
             </div>
 
-            <div style={{ fontWeight: 700 }}>No Lie</div>
+            <div style={{ fontWeight: 700 }}>{song?.title}</div>
 
             <div
               style={{
@@ -503,12 +506,22 @@ export default function Hero() {
                 color: "var(--muted)",
               }}
             >
-              Sean Paul, Dua Lipa
+              {song?.artist}
             </div>
           </div>
         </div>
 
-        <div style={{ fontSize: 34, opacity: 0.7 }}>▶</div>
+        <a
+          href={song?.url}
+          target="_blank"
+          style={{
+            fontSize: 34,
+            opacity: 0.7,
+            textDecoration: "none",
+          }}
+        >
+          ▶
+        </a>
       </div>
     </section>
   );
