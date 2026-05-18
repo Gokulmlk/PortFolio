@@ -1,12 +1,12 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import TechStack from "@/components/TechStack";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import About from "@/components/About";
-import GitHubActivity from "@/components/GitHubActivity";
-import Achievements from "@/components/Achievements";
-import Guestbook from "@/components/Guestbook";
+import Hero from "@/components/sections/Hero";
+import TechStack from "@/components/sections/TechStack";
+import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
+import About from "@/components/sections/About";
+import GitHubActivity from "@/components/sections/GitHubActivity";
+import Achievements from "@/components/sections/Achievements";
+import Guestbook from "@/components/sections/Guestbook";
 import Footer from "@/components/Footer";
 
 export default function Home() {

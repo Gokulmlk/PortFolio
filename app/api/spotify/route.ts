@@ -1,26 +1,25 @@
-import SpotifyWebApi from "spotify-web-api-node";
+import { NextResponse } from "next/server";
+import { getNowPlaying } from "@/lib/services/spotify";
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENT_ID!,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
-  refreshToken: process.env.SPOTIFY_REFRESH_TOKEN!,
-});
+export const revalidate = 30; // cache for 30 seconds
 
 export async function GET() {
-  const data = await spotifyApi.refreshAccessToken();
+  try {
+    const song = await getNowPlaying();
 
-  spotifyApi.setAccessToken(data.body.access_token);
+    if (!song) {
+      return NextResponse.json(
+        { isPlaying: false, title: null },
+        { status: 200 }
+      );
+    }
 
-  const recent = await spotifyApi.getMyRecentlyPlayedTracks({
-    limit: 1,
-  });
-
-  const track = recent.body.items[0].track;
-
-  return Response.json({
-    title: track.name,
-    artist: track.artists.map((a) => a.name).join(", "),
-    image: track.album.images[0].url,
-    url: track.external_urls.spotify,
-  });
+    return NextResponse.json(song);
+  } catch (error) {
+    console.error("[Spotify API]", error);
+    return NextResponse.json(
+      { error: "Failed to fetch" },
+      { status: 500 }
+    );
+  }
 }

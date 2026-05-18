@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import { ExternalLink } from "lucide-react";
-import {GitHubCalendar} from "react-github-calendar"; // ✅ Added package
+import GitHubCalendar from "react-github-calendar"; // ✅ Added package
 
 export default function GitHubActivity() {
   return (
