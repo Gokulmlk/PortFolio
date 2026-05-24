@@ -1,15 +1,59 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Started 🚀
 
-First, run the development server:
+First, install the dependencies:
 
-```bash
+bash
+npm install
+
+
+### Environment Setup 🛠️
+
+Create a `.env.local` file in the root directory and add your Spotify API credentials:
+
+env
+SPOTIFY_CLIENT_ID=your_client_id
+SPOTIFY_CLIENT_SECRET=your_client_secret
+SPOTIFY_REDIRECT_URI=http://localhost:3000/api/spotify/callback
+SPOTIFY_REFRESH_TOKEN=
+
+
+### Spotify Integration 🎵
+
+This project includes a built-in flow to generate your refresh token:
+1. Start the development server using `npm run dev`.
+2. Navigate to `http://localhost:3000/api/spotify/login` in your browser.
+3. After authorizing, the page will display your `SPOTIFY_REFRESH_TOKEN`.
+4. Copy this token into your `.env.local` file to enable the live Spotify playback component.
+
+### Run the App
+
+Finally, run the development server:
+
+bash
 npm run dev
+
 # or
-yarn dev
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
 # or
-pnpm dev
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
 # or
 bun dev
 ```
