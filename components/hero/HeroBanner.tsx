@@ -8,14 +8,14 @@ export default function HeroBanner({ theme }: Props) {
   const imageSrc = theme === "dark" ? "/night.png" : "/day.png";
 
   function handleProfileClick() {
-    const audio = new Audio("/click.mp3");
+    const audio = new Audio("/click.wav");
     audio.play().catch(() => {});
 
     const img = document.getElementById("profile-switch") as HTMLImageElement;
     if (!img) return;
-    img.src = img.src.includes("profile1.png")
+    img.src = img.src.includes("profile10.png")
       ? "/profile2.png"
-      : "/profile1.png";
+      : "/profile10.png";
   }
 
   return (
@@ -91,6 +91,9 @@ export default function HeroBanner({ theme }: Props) {
             cursor: "pointer",
             border: "4px solid white",
             boxShadow: "0 10px 24px rgba(0,0,0,0.25)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             background: "#fff",
             animation: "floatOnly 2s ease-in-out infinite",
           }}
@@ -102,7 +105,7 @@ export default function HeroBanner({ theme }: Props) {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover",
+              objectFit: "contain",
             }}
           />
         </div>
