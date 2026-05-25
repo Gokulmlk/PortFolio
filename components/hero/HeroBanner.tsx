@@ -11,8 +11,12 @@ export default function HeroBanner({ theme }: Props) {
     const audio = new Audio("/click.wav");
     audio.play().catch(() => {});
 
-    const img = document.getElementById("profile-switch") as HTMLImageElement;
+    const img = document.getElementById(
+      "profile-switch"
+    ) as HTMLImageElement;
+
     if (!img) return;
+
     img.src = img.src.includes("profile10.png")
       ? "/profile2.png"
       : "/profile10.png";
@@ -22,7 +26,7 @@ export default function HeroBanner({ theme }: Props) {
     <div
       style={{
         width: "100%",
-        height: 260,
+        height: "clamp(180px, 35vw, 260px)",
         borderRadius: 24,
         overflow: "visible",
         position: "relative",
@@ -39,6 +43,7 @@ export default function HeroBanner({ theme }: Props) {
           height: "100%",
           objectFit: "cover",
           transition: "all 0.5s ease",
+          borderRadius: 24,
         }}
       />
 
@@ -47,6 +52,7 @@ export default function HeroBanner({ theme }: Props) {
         style={{
           position: "absolute",
           inset: 0,
+          borderRadius: 24,
           background:
             theme === "dark"
               ? "linear-gradient(to bottom, transparent, rgba(0,0,0,0.5))"
@@ -54,7 +60,7 @@ export default function HeroBanner({ theme }: Props) {
         }}
       />
 
-      {/* Profile Picture */}
+      {/* Profile Section */}
       <div
         style={{
           position: "absolute",
@@ -67,14 +73,16 @@ export default function HeroBanner({ theme }: Props) {
         <div
           style={{
             position: "absolute",
-            left: 125,
-            top: 20,
+            left: "110%",
+            top: "50%",
+            transform: "translateY(-50%)",
             color: "#fff",
             fontSize: 13,
             fontWeight: 600,
             whiteSpace: "nowrap",
             animation: "moveArrow 1s infinite",
             pointerEvents: "none",
+            textShadow: "0 2px 8px rgba(0,0,0,0.5)",
           }}
         >
           Click Me ➜
@@ -84,18 +92,19 @@ export default function HeroBanner({ theme }: Props) {
         <div
           onClick={handleProfileClick}
           style={{
-            width: 110,
-            height: 110,
+            width: "clamp(80px, 22vw, 110px)",
+            height: "clamp(80px, 22vw, 110px)",
             borderRadius: "50%",
             overflow: "hidden",
             cursor: "pointer",
             border: "4px solid white",
             boxShadow: "0 10px 24px rgba(0,0,0,0.25)",
+            animation: "floatOnly 2s ease-in-out infinite",
+            background: "#fff",
+
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "#fff",
-            animation: "floatOnly 2s ease-in-out infinite",
           }}
         >
           <img
@@ -113,12 +122,29 @@ export default function HeroBanner({ theme }: Props) {
 
       <style jsx>{`
         @keyframes moveArrow {
-          0%, 100% { transform: translateX(0px); }
-          50%       { transform: translateX(8px); }
+          0%,
+          100% {
+            transform: translateY(-50%) translateX(0px);
+          }
+          50% {
+            transform: translateY(-50%) translateX(8px);
+          }
         }
+
         @keyframes floatOnly {
-          0%, 100% { transform: translateY(0px); }
-          50%       { transform: translateY(-4px); }
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-4px);
+          }
+        }
+
+        @media (max-width: 600px) {
+          div[style] {
+            font-size: 12px;
+          }
         }
       `}</style>
     </div>
