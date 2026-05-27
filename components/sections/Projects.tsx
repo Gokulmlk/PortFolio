@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   Globe,
@@ -30,6 +26,13 @@ import {
   SiDocker,
   SiRedux,
   SiSocketdotio,
+  SiJsonwebtokens,
+  SiGithub,
+  SiMapbox,
+  SiGoogle,
+  SiDiscord,
+  SiCloudflare,
+  SiRedis,
 } from "react-icons/si";
 
 import { projects } from "@/lib/data";
@@ -41,7 +44,7 @@ const techIcons: any = {
   },
 
   "Next.js": {
-    icon: <SiNextdotjs color="currentColor" />,
+    icon: <SiNextdotjs color="#ffffff" />,
     bg: "rgba(255,255,255,0.08)",
   },
 
@@ -65,7 +68,7 @@ const techIcons: any = {
     bg: "rgba(255,202,40,0.12)",
   },
 
-  Node: {
+  "Node.js": {
     icon: <SiNodedotjs color="#5FA04E" />,
     bg: "rgba(95,160,78,0.12)",
   },
@@ -76,7 +79,7 @@ const techIcons: any = {
   },
 
   Express: {
-    icon: <SiExpress color="currentColor" />,
+    icon: <SiExpress color="#ffffff" />,
     bg: "rgba(255,255,255,0.08)",
   },
 
@@ -96,46 +99,72 @@ const techIcons: any = {
   },
 
   SocketIO: {
-    icon: <SiSocketdotio color="currentColor" />,
+    icon: <SiSocketdotio color="#ffffff" />,
+    bg: "rgba(255,255,255,0.08)",
+  },
+
+  Redis: {
+    icon: <SiRedis color="#DC382D" />,
+    bg: "rgba(220,56,45,0.12)",
+  },
+
+  BullMQ: {
+    icon: <SiRedis color="#DC382D" />,
+    bg: "rgba(220,56,45,0.12)",
+  },
+
+  "Cloudflare R2": {
+    icon: <SiCloudflare color="#F38020" />,
+    bg: "rgba(243,128,32,0.12)",
+  },
+
+  "Discord.js": {
+    icon: <SiDiscord color="#5865F2" />,
+    bg: "rgba(88,101,242,0.12)",
+  },
+
+  "Google Calendar API": {
+    icon: <SiGoogle color="#4285F4" />,
+    bg: "rgba(66,133,244,0.12)",
+  },
+
+  Mapbox: {
+    icon: <SiMapbox color="#000000" />,
+    bg: "rgba(255,255,255,0.08)",
+  },
+
+  JWT: {
+    icon: <SiJsonwebtokens color="#ffffff" />,
+    bg: "rgba(255,255,255,0.08)",
+  },
+
+  GitHub: {
+    icon: <SiGithub color="#ffffff" />,
     bg: "rgba(255,255,255,0.08)",
   },
 };
 
 export default function Projects() {
-  const featured = projects.filter(
-    (p) => p.featured
-  );
+  const featured = projects.filter((p) => p.featured);
 
-  const [showAll, setShowAll] =
-    useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [selected, setSelected] = useState<any>(null);
 
-  const [selected, setSelected] =
-    useState<any>(null);
-
-  const visibleProjects = showAll
-    ? featured
-    : featured.slice(0, 4);
+  const visibleProjects = showAll ? featured : featured.slice(0, 4);
 
   return (
     <>
       <section
         id="projects"
         style={{
-          padding: "100px 20px",
+          padding: "20px",
           background: "var(--bg)",
-          transition: "0.3s ease",
         }}
       >
         {/* Heading */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{
             marginBottom: 55,
@@ -155,8 +184,7 @@ export default function Projects() {
           <h2
             style={{
               color: "var(--text)",
-              fontSize:
-                "clamp(2.8rem,8vw,5rem)",
+              fontSize: "clamp(2.8rem,8vw,5rem)",
               fontWeight: 900,
               lineHeight: 1,
               letterSpacing: "-0.06em",
@@ -170,322 +198,234 @@ export default function Projects() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit,minmax(320px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
             gap: 28,
           }}
         >
           <AnimatePresence>
-            {visibleProjects.map(
-              (p, i) => (
-                <motion.div
-                  key={p.name}
-                  initial={{
-                    opacity: 0,
-                    y: 50,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  whileHover={{
-                    y: -8,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    delay: i * 0.08,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  onClick={() =>
-                    setSelected(p)
-                  }
+            {visibleProjects.map((p, i) => (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                transition={{
+                  duration: 0.45,
+                  delay: i * 0.08,
+                }}
+                viewport={{ once: true }}
+                onClick={() => setSelected(p)}
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 28,
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  position: "relative",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+                }}
+              >
+                {/* Glow */}
+                <div
                   style={{
+                    position: "absolute",
+                    inset: 0,
                     background:
-                      "var(--card)",
-                    border:
-                      "1px solid var(--border)",
-                    borderRadius: 28,
+                      "radial-gradient(circle at top right, rgba(255,120,80,0.14), transparent 45%)",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                  }}
+                />
+
+                {/* Image */}
+                <div
+                  className="image-wrapper"
+                  style={{
                     overflow: "hidden",
-                    cursor: "pointer",
                     position: "relative",
-                    transition: "0.3s ease",
-                    boxShadow:
-                      "0 12px 35px rgba(0,0,0,0.12)",
                   }}
                 >
-                  {/* Glow */}
-                  <div
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                    src={p.image}
+                    alt={p.name}
                     style={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "radial-gradient(circle at top right, rgba(255,120,80,0.14), transparent 45%)",
-                      pointerEvents: "none",
+                      width: "100%",
+                      height: 230,
+                      objectFit: "cover",
+                      display: "block",
                     }}
                   />
 
-                  {/* Image */}
+                  {/* Overlay */}
+                  <div className="hover-links">
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      style={buttonStyle}
+                    >
+                      <Globe size={18} />
+                      Live
+                    </a>
+
+                    <a
+                      href={p.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      style={buttonStyle}
+                    >
+                      <Github size={18} />
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div
+                  style={{
+                    padding: 24,
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {/* Title */}
                   <div
                     style={{
-                      overflow: "hidden",
-                      position: "relative",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: 14,
+                      gap: 12,
                     }}
                   >
-                    <motion.img
-                      whileHover={{
-                        scale: 1.05,
-                      }}
-                      transition={{
-                        duration: 0.4,
-                      }}
-                      src={p.image}
-                      alt={p.name}
+                    <h3
                       style={{
-                        width: "100%",
-                        height: 230,
-                        objectFit: "cover",
-                        display: "block",
-                      }}
-                    />
-
-                    {/* Hover Links */}
-                    <div
-                      className="hover-links"
-                      style={{
-                        position:
-                          "absolute",
-                        inset: 0,
-                        background:
-                          "rgba(0,0,0,0.45)",
-                        display: "flex",
-                        justifyContent:
-                          "center",
-                        alignItems:
-                          "center",
-                        gap: 14,
-                        opacity: 0,
-                        transition:
-                          "0.3s",
+                        color: "var(--text)",
+                        fontSize: "clamp(1.4rem,4vw,2rem)",
+                        fontWeight: 800,
+                        letterSpacing: "-0.04em",
                       }}
                     >
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) =>
-                          e.stopPropagation()
-                        }
-                        style={
-                          buttonStyle
-                        }
-                      >
-                        <Globe size={18} />
-                        Live
-                      </a>
+                      {p.name}
+                    </h3>
 
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) =>
-                          e.stopPropagation()
-                        }
-                        style={
-                          buttonStyle
-                        }
-                      >
-                        <Github size={18} />
-                        GitHub
-                      </a>
-                    </div>
+                    <ArrowUpRight size={22} color="var(--muted)" />
                   </div>
 
-                  {/* Content */}
-                  <div
+                  {/* Description */}
+                  <p
                     style={{
-                      padding: 24,
+                      color: "var(--muted)",
+                      fontSize: 14,
+                      lineHeight: 1.9,
+                      marginBottom: 22,
                     }}
                   >
-                    {/* Title */}
-                    <div
-                      style={{
-                        display:
-                          "flex",
-                        justifyContent:
-                          "space-between",
-                        alignItems:
-                          "center",
-                        marginBottom: 14,
-                        gap: 12,
-                      }}
-                    >
-                      <h3
+                    {p.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                    }}
+                  >
+                    {p.tech.map((tech: string, idx: number) => (
+                      <div
+                        key={idx}
                         style={{
-                          color:
-                            "var(--text)",
-                          fontSize:
-                            "clamp(1.4rem,4vw,2rem)",
-                          fontWeight: 800,
-                          letterSpacing:
-                            "-0.04em",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          padding: "9px 14px",
+                          borderRadius: 999,
+                          background:
+                            techIcons[tech]?.bg ||
+                            "rgba(255,255,255,0.05)",
+                          border: "1px solid var(--border)",
+                          color: "var(--text)",
+                          fontSize: 13,
+                          fontWeight: 600,
                         }}
                       >
-                        {p.name}
-                      </h3>
+                        <span
+                          style={{
+                            display: "flex",
+                            fontSize: 17,
+                          }}
+                        >
+                          {techIcons[tech]?.icon || "⚡"}
+                        </span>
 
-                      <ArrowUpRight
-                        size={22}
-                        color="var(--muted)"
-                      />
-                    </div>
-
-                    {/* Description */}
-                    <p
-                      style={{
-                        color:
-                          "var(--muted)",
-                        fontSize: 14,
-                        lineHeight: 1.9,
-                        marginBottom: 22,
-                      }}
-                    >
-                      {p.description}
-                    </p>
-
-                    {/* Tech Stack */}
-                    <div
-                      style={{
-                        display:
-                          "flex",
-                        flexWrap:
-                          "wrap",
-                        gap: 10,
-                      }}
-                    >
-                      {p.tech.map(
-                        (
-                          tech: string,
-                          idx: number
-                        ) => (
-                          <div
-                            key={idx}
-                            style={{
-                              display:
-                                "flex",
-                              alignItems:
-                                "center",
-                              gap: 8,
-                              padding:
-                                "9px 14px",
-                              borderRadius: 999,
-                              background:
-                                techIcons[
-                                  tech
-                                ]?.bg ||
-                                "rgba(255,255,255,0.05)",
-                              border:
-                                "1px solid var(--border)",
-                              color:
-                                "var(--text)",
-                              fontSize: 13,
-                              fontWeight: 600,
-                            }}
-                          >
-                            <span
-                              style={{
-                                display:
-                                  "flex",
-                                fontSize: 17,
-                              }}
-                            >
-                              {techIcons[
-                                tech
-                              ]?.icon ||
-                                "⚡"}
-                            </span>
-
-                            {tech}
-                          </div>
-                        )
-                      )}
-                    </div>
+                        {tech}
+                      </div>
+                    ))}
                   </div>
+                </div>
 
-                  <style jsx>{`
-                    div:hover
-                      > .hover-links {
-                      opacity: 1;
-                    }
-                  `}</style>
-                </motion.div>
-              )
-            )}
+                <style jsx>{`
+                  .image-wrapper:hover .hover-links {
+                    opacity: 1;
+                  }
+
+                  .hover-links {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.55);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 14px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index: 5;
+                  }
+                `}</style>
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
 
         {/* Show More */}
         {featured.length > 4 && (
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             style={{
               display: "flex",
-              justifyContent:
-                "center",
+              justifyContent: "center",
               marginTop: 60,
             }}
           >
             <motion.button
-              whileHover={{
-                scale: 1.08,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              onClick={() =>
-                setShowAll(
-                  !showAll
-                )
-              }
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowAll(!showAll)}
               style={{
                 width: 74,
                 height: 74,
                 borderRadius: "50%",
-                border:
-                  "1px solid var(--border)",
-                background:
-                  "var(--card)",
-                color:
-                  "var(--text)",
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                color: "var(--text)",
                 display: "flex",
-                alignItems:
-                  "center",
-                justifyContent:
-                  "center",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: "pointer",
-                boxShadow:
-                  "0 10px 35px rgba(0,0,0,0.15)",
+                boxShadow: "0 10px 35px rgba(0,0,0,0.15)",
               }}
             >
               {showAll ? (
-                <ChevronUp
-                  size={30}
-                />
+                <ChevronUp size={30} />
               ) : (
-                <ChevronDown
-                  size={30}
-                />
+                <ChevronDown size={30} />
               )}
             </motion.button>
           </motion.div>
@@ -496,29 +436,18 @@ export default function Projects() {
       <AnimatePresence>
         {selected && (
           <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            onClick={() =>
-              setSelected(null)
-            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelected(null)}
             style={{
               position: "fixed",
               inset: 0,
-              background:
-                "rgba(0,0,0,0.72)",
-              backdropFilter:
-                "blur(8px)",
+              background: "rgba(0,0,0,0.72)",
+              backdropFilter: "blur(8px)",
               zIndex: 999,
               display: "flex",
-              justifyContent:
-                "center",
+              justifyContent: "center",
               alignItems: "center",
               padding: 20,
             }}
@@ -536,41 +465,31 @@ export default function Projects() {
                 scale: 0.92,
                 opacity: 0,
               }}
-              onClick={(e) =>
-                e.stopPropagation()
-              }
+              onClick={(e) => e.stopPropagation()}
               style={{
                 width: "100%",
                 maxWidth: 820,
-                background:
-                  "var(--card)",
+                background: "var(--card)",
                 borderRadius: 30,
                 overflow: "hidden",
-                border:
-                  "1px solid var(--border)",
-                position:
-                  "relative",
+                border: "1px solid var(--border)",
+                position: "relative",
               }}
             >
               <button
-                onClick={() =>
-                  setSelected(null)
-                }
+                onClick={() => setSelected(null)}
                 style={{
-                  position:
-                    "absolute",
+                  position: "absolute",
                   top: 16,
                   right: 16,
                   width: 42,
                   height: 42,
-                  borderRadius:
-                    "50%",
+                  borderRadius: "50%",
                   border: "none",
-                  background:
-                    "rgba(255,255,255,0.08)",
-                  color:
-                    "white",
+                  background: "rgba(255,255,255,0.08)",
+                  color: "white",
                   cursor: "pointer",
+                  zIndex: 10,
                 }}
               >
                 <X size={22} />
@@ -593,10 +512,8 @@ export default function Projects() {
               >
                 <h2
                   style={{
-                    color:
-                      "var(--text)",
-                    fontSize:
-                      "clamp(2rem,5vw,3rem)",
+                    color: "var(--text)",
+                    fontSize: "clamp(2rem,5vw,3rem)",
                     fontWeight: 900,
                     marginBottom: 16,
                   }}
@@ -606,8 +523,7 @@ export default function Projects() {
 
                 <p
                   style={{
-                    color:
-                      "var(--muted)",
+                    color: "var(--muted)",
                     lineHeight: 2,
                     marginBottom: 28,
                   }}
@@ -623,32 +539,22 @@ export default function Projects() {
                   }}
                 >
                   <a
-                    href={
-                      selected.live
-                    }
+                    href={selected.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={
-                      modalButton
-                    }
+                    style={modalButton}
                   >
                     <Globe size={18} />
                     Live Demo
                   </a>
 
                   <a
-                    href={
-                      selected.github
-                    }
+                    href={selected.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={
-                      modalButton
-                    }
+                    style={modalButton}
                   >
-                    <Github
-                      size={18}
-                    />
+                    <Github size={18} />
                     GitHub
                   </a>
                 </div>
@@ -671,6 +577,9 @@ const buttonStyle = {
   background: "#ffffff",
   color: "#111111",
   fontWeight: 700,
+  cursor: "pointer",
+  position: "relative" as const,
+  zIndex: 20,
 };
 
 const modalButton = {
@@ -680,8 +589,7 @@ const modalButton = {
   textDecoration: "none",
   padding: "13px 18px",
   borderRadius: 14,
-  background:
-    "linear-gradient(135deg,#ff784e,#ff4d4d)",
+  background: "linear-gradient(135deg,#ff784e,#ff4d4d)",
   color: "#ffffff",
   fontWeight: 700,
 };

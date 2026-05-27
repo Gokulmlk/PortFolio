@@ -62,90 +62,118 @@ export const experience = [
   },
 ];
 
-// ─── PROJECTS (all 8 — extracted by TinyFish) ───────────────────
+// ─── PROJECTS ─────────────────────────────────────────────────
 export const projects = [
   {
     name: "Youtube Clone",
-    description: "AI-powered platform that automatically generates and keeps GitHub READMEs in sync using webhooks, background workers, and large language models.",
+    image: "Youtubeclon.png",
+    description:
+      " A YouTube-inspired video platform where users can upload, stream, and explore videos with secure authentication and a responsive user experience.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Redis", "BullMQ"],
-    techIcons: ["react","nodejs","express","mongodb","redis","redis"],
+    techIcons: ["react", "Node.js", "express", "mongodb", "redis", "redis"],
     status: "Live",
-    link: "https://www.daemondoc.online",
-    emoji: "🤖",
+    link: "https://youtube-clone-gmxq.vercel.app/",
     gradient: "135deg, #1a1a2e 0%, #16213e 100%",
     featured: true,
   },
+
   {
     name: "NovaDrive",
-    description: "A next-generation cloud storage platform with chunked uploads, secure file handling, and AI-powered organization with automation and productivity focus.",
+    image: "/projects/novadrive.png",
+    description:
+      "A next-generation cloud storage platform with chunked uploads, secure file handling, and AI-powered organization with automation and productivity focus.",
     tech: ["React.js", "Node.js", "MongoDB", "Cloudflare R2"],
-    techIcons: ["react","nodejs","mongodb","cloudflare"],
+    techIcons: ["react", "nodejs", "mongodb", "cloudflare"],
     status: "Live",
     link: "https://www.novadrive.space",
     emoji: "☁️",
     gradient: "135deg, #0f2027 0%, #203a43 100%",
     featured: true,
   },
+
   {
     name: "BreathClean",
-    description: "A health-focused navigation platform that recommends routes based on air quality, weather, and traffic. Computes a real-time health score using live AQI, weather data, and congestion analysis.",
+    image: "/projects/breathclean.png",
+    description:
+      "A health-focused navigation platform that recommends routes based on air quality, weather, and traffic. Computes a real-time health score using live AQI, weather data, and congestion analysis.",
     tech: ["Next.js", "React", "Pathway", "Express", "MongoDB", "Mapbox"],
-    techIcons: ["nextjs","react","python","express","mongodb"],
+    techIcons: ["nextjs", "react", "python", "express", "mongodb"],
     status: "Live",
     link: "https://breathe.daemondoc.online",
     emoji: "🌿",
     gradient: "135deg, #0a2818 0%, #0d3320 100%",
     featured: true,
   },
+
   {
     name: "RemindMe",
-    description: "A smart Discord bot that lets users create reminders using natural language. Supports recurring reminders, DM & email notifications, Google Calendar sync, and AI-powered intent parsing.",
-    tech: ["Node.js", "Discord.js", "MongoDB", "Express", "Google Calendar API"],
-    techIcons: ["nodejs","discord","mongodb","express"],
+    image: "/projects/remindme.png",
+    description:
+      "A smart Discord bot that lets users create reminders using natural language. Supports recurring reminders, DM & email notifications, Google Calendar sync, and AI-powered intent parsing.",
+    tech: [
+      "Node.js",
+      "Discord.js",
+      "MongoDB",
+      "Express",
+      "Google Calendar API",
+    ],
+    techIcons: ["nodejs", "discord", "mongodb", "express"],
     status: "Live",
     link: "#",
     emoji: "⏰",
     gradient: "135deg, #1a0530 0%, #2d0f52 100%",
     featured: true,
   },
+
   {
     name: "DisDrive",
-    description: "A full-stack cloud storage system that uses Discord as a backend, featuring JWT auth, file streaming, Discord bot commands, and metadata persistence.",
+    image: "/projects/disdrive.png",
+    description:
+      "A full-stack cloud storage system that uses Discord as a backend, featuring JWT auth, file streaming, Discord bot commands, and metadata persistence.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Discord.js", "JWT"],
-    techIcons: ["react","nodejs","express","mongodb","discord"],
+    techIcons: ["react", "nodejs", "express", "mongodb", "discord"],
     status: "Live",
     link: "#",
     emoji: "💾",
     gradient: "135deg, #0d1117 0%, #161b22 100%",
     featured: false,
   },
+
   {
     name: "Authoritative DNS Server",
-    description: "A minimal authoritative DNS server built in Node.js with Redis-backed storage and environment-based configuration.",
+    image: "/projects/dns-server.png",
+    description:
+      "A minimal authoritative DNS server built in Node.js with Redis-backed storage and environment-based configuration.",
     tech: ["Node.js", "dns2", "Redis", "dotenv"],
-    techIcons: ["nodejs","redis"],
+    techIcons: ["nodejs", "redis"],
     status: "Live",
     link: "#",
     emoji: "🌐",
     gradient: "135deg, #0c1a0c 0%, #122012 100%",
     featured: false,
   },
+
   {
     name: "TitleForge",
-    description: "AI-powered platform for generating high-performing YouTube titles using modern NLP models and the Google Gemini API.",
+    image: "/projects/titleforge.png",
+    description:
+      "AI-powered platform for generating high-performing YouTube titles using modern NLP models and the Google Gemini API.",
     tech: ["React.js", "Node.js", "MongoDB", "Gemini"],
-    techIcons: ["react","nodejs","mongodb"],
+    techIcons: ["react", "nodejs", "mongodb"],
     status: "Live",
     link: "#",
     emoji: "✨",
     gradient: "135deg, #1a1200 0%, #2d2000 100%",
     featured: false,
   },
+
   {
     name: "ResolveIQ",
-    description: "An issue tracking platform with structured workflows and role-based access control — think Jira but lightweight and developer-first.",
+    image: "/projects/resolveiq.png",
+    description:
+      "An issue tracking platform with structured workflows and role-based access control — think Jira but lightweight and developer-first.",
     tech: ["React.js", "Node.js", "MongoDB", "Express.js"],
-    techIcons: ["react","nodejs","mongodb","express"],
+    techIcons: ["react", "nodejs", "mongodb", "express"],
     status: "Live",
     link: "#",
     emoji: "🎯",
