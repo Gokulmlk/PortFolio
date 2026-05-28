@@ -12,137 +12,11 @@ import {
   X,
 } from "lucide-react";
 
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiMongodb,
-  SiFirebase,
-  SiNodedotjs,
-  SiJavascript,
-  SiExpress,
-  SiPostgresql,
-  SiDocker,
-  SiRedux,
-  SiSocketdotio,
-  SiJsonwebtokens,
-  SiGithub,
-  SiMapbox,
-  SiGoogle,
-  SiDiscord,
-  SiCloudflare,
-  SiRedis,
-} from "react-icons/si";
+import  {techIcons}  from "@/lib/techIcons";
 
 import { projects } from "@/lib/data";
 
-const techIcons: any = {
-  React: {
-    icon: <SiReact color="#61DAFB" />,
-    bg: "rgba(97,218,251,0.12)",
-  },
 
-  "Next.js": {
-    icon: <SiNextdotjs color="#ffffff" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-
-  TypeScript: {
-    icon: <SiTypescript color="#3178C6" />,
-    bg: "rgba(49,120,198,0.12)",
-  },
-
-  Tailwind: {
-    icon: <SiTailwindcss color="#38BDF8" />,
-    bg: "rgba(56,189,248,0.12)",
-  },
-
-  MongoDB: {
-    icon: <SiMongodb color="#47A248" />,
-    bg: "rgba(71,162,72,0.12)",
-  },
-
-  Firebase: {
-    icon: <SiFirebase color="#FFCA28" />,
-    bg: "rgba(255,202,40,0.12)",
-  },
-
-  "Node.js": {
-    icon: <SiNodedotjs color="#5FA04E" />,
-    bg: "rgba(95,160,78,0.12)",
-  },
-
-  JavaScript: {
-    icon: <SiJavascript color="#F7DF1E" />,
-    bg: "rgba(247,223,30,0.12)",
-  },
-
-  Express: {
-    icon: <SiExpress color="#ffffff" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-
-  PostgreSQL: {
-    icon: <SiPostgresql color="#336791" />,
-    bg: "rgba(51,103,145,0.12)",
-  },
-
-  Docker: {
-    icon: <SiDocker color="#2496ED" />,
-    bg: "rgba(36,150,237,0.12)",
-  },
-
-  Redux: {
-    icon: <SiRedux color="#764ABC" />,
-    bg: "rgba(118,74,188,0.12)",
-  },
-
-  SocketIO: {
-    icon: <SiSocketdotio color="#ffffff" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-
-  Redis: {
-    icon: <SiRedis color="#DC382D" />,
-    bg: "rgba(220,56,45,0.12)",
-  },
-
-  BullMQ: {
-    icon: <SiRedis color="#DC382D" />,
-    bg: "rgba(220,56,45,0.12)",
-  },
-
-  "Cloudflare R2": {
-    icon: <SiCloudflare color="#F38020" />,
-    bg: "rgba(243,128,32,0.12)",
-  },
-
-  "Discord.js": {
-    icon: <SiDiscord color="#5865F2" />,
-    bg: "rgba(88,101,242,0.12)",
-  },
-
-  "Google Calendar API": {
-    icon: <SiGoogle color="#4285F4" />,
-    bg: "rgba(66,133,244,0.12)",
-  },
-
-  Mapbox: {
-    icon: <SiMapbox color="#000000" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-
-  JWT: {
-    icon: <SiJsonwebtokens color="#ffffff" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-
-  GitHub: {
-    icon: <SiGithub color="#ffffff" />,
-    bg: "rgba(255,255,255,0.08)",
-  },
-};
 
 export default function Projects() {
   const featured = projects.filter((p) => p.featured);
@@ -329,44 +203,48 @@ export default function Projects() {
                   </p>
 
                   {/* Tech Stack */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: 10,
-                    }}
-                  >
-                    {p.tech.map((tech: string, idx: number) => (
-                      <div
-                        key={idx}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                          padding: "9px 14px",
-                          borderRadius: 999,
-                          background:
-                            techIcons[tech]?.bg ||
-                            "rgba(255,255,255,0.05)",
-                          border: "1px solid var(--border)",
-                          color: "var(--text)",
-                          fontSize: 13,
-                          fontWeight: 600,
-                        }}
-                      >
-                        <span
-                          style={{
-                            display: "flex",
-                            fontSize: 17,
-                          }}
-                        >
-                          {techIcons[tech]?.icon || "⚡"}
-                        </span>
+<div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+  }}
+>
+  {p.tech.map((tech: string, idx: number) => {
+    const techData = techIcons[tech];
 
-                        {tech}
-                      </div>
-                    ))}
-                  </div>
+    return (
+      <div
+        key={idx}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "9px 14px",
+          borderRadius: 999,
+          background:
+            techData?.bg || "rgba(255,255,255,0.05)",
+          border: "1px solid var(--border)",
+          color: "var(--text)",
+          fontSize: 13,
+          fontWeight: 600,
+        }}
+      >
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: 17,
+          }}
+        >
+          {techData?.icon || "⚡"}
+        </span>
+
+        <span>{tech}</span>
+      </div>
+    );
+  })}
+</div>
                 </div>
 
                 <style jsx>{`

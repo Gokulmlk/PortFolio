@@ -44,28 +44,41 @@ export async function GET() {
       }
     );
 
-    if (
-      now.status === 200 &&
-      now.data &&
-      now.data.item
-    ) {
-      const track = now.data.item;
+    // ── Currently playing ─────────────────────────────
+if (now.status === 200 && now.data?.item) {
+  const track = now.data.item;
+  return NextResponse.json({
+    isPlaying: now.data.is_playing ?? true,
+    title: track.name,
+    artist: track.artists.map((a: { name: string }) => a.name).join(", "),
+    image: track.album.images?.[0]?.url ?? null,
+    url: track.external_urls.spotify,
+  });
+}
 
-      return NextResponse.json({
-        isPlaying: true,
-        title: track.name,
-        artist: track.artists
-          .map((a: any) => a.name)
-          .join(", "),
-        image: track.album.images?.[0]?.url,
-        url: track.external_urls.spotify,
-      });
-    }
+// ── Fallback: last played ───────────────────────
+const recent = await axios.get(
+  "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+  {
+    headers: { Authorization: `Bearer ${accessToken}` },
+    validateStatus: () => true,
+  }
+);
+const lastTrack = recent.data?.items?.[0]?.track;
+if (recent.status === 200 && lastTrack) {
+  return NextResponse.json({
+    isPlaying: false,
+    title: lastTrack.name,
+    artist: lastTrack.artists.map((a: { name: string }) => a.name).join(", "),
+    image: lastTrack.album.images?.[0]?.url ?? null,
+    url: lastTrack.external_urls.spotify,
+  });
+}
 
-    return NextResponse.json({
-      isPlaying: false,
-      title: null,
-    });
+return NextResponse.json({
+  isPlaying: false,
+  title: null,
+});
   } catch (err: any) {
     console.error(
       "Spotify Error:",
