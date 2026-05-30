@@ -69,8 +69,8 @@ export const projects = [
     image: "Youtubeclon.png",
     description:
       " A YouTube-inspired video platform where users can upload, stream, and explore videos with secure authentication and a responsive user experience.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Redis", "BullMQ"],
-    techIcons: ["react", "Node.js", "express", "mongodb", "redis", "redis"],
+    tech: ["React", "Node.js", "Express", "MongoDB", "Redis"],
+    techIcons: ["react", "Node.js", "express", "mongodb", "redis"],
     status: "Live",
     link: "https://youtube-clone-gmxq.vercel.app/",
     gradient: "135deg, #1a1a2e 0%, #16213e 100%",
@@ -78,122 +78,24 @@ export const projects = [
   },
 
   {
-    name: "NovaDrive",
-    image: "/projects/novadrive.png",
+    name: "ShopyGlobe",
+    image: "Shopyglobe.png",
     description:
-      "A next-generation cloud storage platform with chunked uploads, secure file handling, and AI-powered organization with automation and productivity focus.",
+      "A responsive online shopping platform with product browsing, secure checkout, and dynamic cart management. Built using MERN stack for speed, scalability, and smooth user experience.",
     tech: ["React.js", "Node.js", "MongoDB", "Cloudflare R2"],
     techIcons: ["react", "nodejs", "mongodb", "cloudflare"],
     status: "Live",
-    link: "https://www.novadrive.space",
+    link: "https://shoppy-globe-woad.vercel.app/",
     emoji: "☁️",
     gradient: "135deg, #0f2027 0%, #203a43 100%",
     featured: true,
-  },
-
-  {
-    name: "BreathClean",
-    image: "/projects/breathclean.png",
-    description:
-      "A health-focused navigation platform that recommends routes based on air quality, weather, and traffic. Computes a real-time health score using live AQI, weather data, and congestion analysis.",
-    tech: ["Next.js", "React", "Pathway", "Express", "MongoDB", "Mapbox"],
-    techIcons: ["nextjs", "react", "python", "express", "mongodb"],
-    status: "Live",
-    link: "https://breathe.daemondoc.online",
-    emoji: "🌿",
-    gradient: "135deg, #0a2818 0%, #0d3320 100%",
-    featured: true,
-  },
-
-  {
-    name: "RemindMe",
-    image: "/projects/remindme.png",
-    description:
-      "A smart Discord bot that lets users create reminders using natural language. Supports recurring reminders, DM & email notifications, Google Calendar sync, and AI-powered intent parsing.",
-    tech: [
-      "Node.js",
-      "Discord.js",
-      "MongoDB",
-      "Express",
-      "Google Calendar API",
-    ],
-    techIcons: ["nodejs", "discord", "mongodb", "express"],
-    status: "Live",
-    link: "#",
-    emoji: "⏰",
-    gradient: "135deg, #1a0530 0%, #2d0f52 100%",
-    featured: true,
-  },
-
-  {
-    name: "DisDrive",
-    image: "/projects/disdrive.png",
-    description:
-      "A full-stack cloud storage system that uses Discord as a backend, featuring JWT auth, file streaming, Discord bot commands, and metadata persistence.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Discord.js", "JWT"],
-    techIcons: ["react", "nodejs", "express", "mongodb", "discord"],
-    status: "Live",
-    link: "#",
-    emoji: "💾",
-    gradient: "135deg, #0d1117 0%, #161b22 100%",
-    featured: false,
-  },
-
-  {
-    name: "Authoritative DNS Server",
-    image: "/projects/dns-server.png",
-    description:
-      "A minimal authoritative DNS server built in Node.js with Redis-backed storage and environment-based configuration.",
-    tech: ["Node.js", "dns2", "Redis", "dotenv"],
-    techIcons: ["nodejs", "redis"],
-    status: "Live",
-    link: "#",
-    emoji: "🌐",
-    gradient: "135deg, #0c1a0c 0%, #122012 100%",
-    featured: false,
-  },
-
-  {
-    name: "TitleForge",
-    image: "/projects/titleforge.png",
-    description:
-      "AI-powered platform for generating high-performing YouTube titles using modern NLP models and the Google Gemini API.",
-    tech: ["React.js", "Node.js", "MongoDB", "Gemini"],
-    techIcons: ["react", "nodejs", "mongodb"],
-    status: "Live",
-    link: "#",
-    emoji: "✨",
-    gradient: "135deg, #1a1200 0%, #2d2000 100%",
-    featured: false,
-  },
-
-  {
-    name: "ResolveIQ",
-    image: "/projects/resolveiq.png",
-    description:
-      "An issue tracking platform with structured workflows and role-based access control — think Jira but lightweight and developer-first.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express.js"],
-    techIcons: ["react", "nodejs", "mongodb", "express"],
-    status: "Live",
-    link: "#",
-    emoji: "🎯",
-    gradient: "135deg, #0a0f1e 0%, #0f1a35 100%",
-    featured: false,
   },
 ];
 
 // ─── ACHIEVEMENTS ────────────────────────────────────────────────
 export const achievements = [
   {
-    rank: "#18",
-    title: "HackFest 2025",
-    subtitle: "Organized by GDG Cloud New Delhi × Agora",
-    description: "Secured a position in the Top 18 globally. Engineered and pitched a technical MVP within a strict 24-hour window. One of only 21 teams selected for the final evaluation phase.",
-    badge: "Global Finalist Status",
-    percentile: "TOP 6% PERCENTILE",
-    total: "300+ Teams",
-    verifyUrl: "https://www.creadefy.com/verify/CERT-4CB901B3-F587-4535",
-    refId: "CERT-4CB901B3-F587-4535",
+    title: "Best Personal Project"
   },
 ];
 
@@ -211,7 +113,7 @@ export const aboutSkills = [
 
 // ─── SAMPLE GUESTBOOK ───────────────────────────────────────────
 export const sampleMessages = [
-  { name: "Priya S.",  avatar: "🧑‍💻", message: "Amazing portfolio! Love the dark aesthetic.",              time: "2d ago" },
-  { name: "Rahul K.",  avatar: "👨‍🎨", message: "Clean work and great project ideas. Keep it up!",         time: "5d ago" },
-  { name: "Dev M.",    avatar: "🙂",   message: "The DNS server project is so underrated!",                 time: "1w ago" },
+  { name: "Roy S.",  avatar: "🧑‍💻", message: "Amazing portfolio! Love the dark aesthetic.",              time: "2d ago" },
+  { name: "Sam K.",  avatar: "👨‍🎨", message: "Clean work and great project ideas. Keep it up!",         time: "5d ago" },
+  { name: "Jhon M.",    avatar: "🙂",   message: "The DNS server project is so underrated!",                 time: "1w ago" },
 ];

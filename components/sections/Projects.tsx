@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 
-import  {techIcons}  from "@/lib/techIcons";
+import  {techIcons}  from "../../lib/techIcons";
 
 import { projects } from "@/lib/data";
 
