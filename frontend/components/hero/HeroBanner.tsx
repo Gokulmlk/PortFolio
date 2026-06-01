@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useState } from "react";
+
 interface Props {
   theme: "dark" | "light";
 }
@@ -7,20 +9,24 @@ interface Props {
 export default function HeroBanner({ theme }: Props) {
   const imageSrc = theme === "dark" ? "/night.png" : "/day.png";
 
-  function handleProfileClick() {
-    const audio = new Audio("/click.wav");
-    audio.play().catch(() => {});
+  const [profileImage, setProfileImage] = useState("/profile10.png");
 
-    const img = document.getElementById(
-      "profile-switch"
-    ) as HTMLImageElement;
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    if (!img) return;
+  const handleProfileClick = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/click.wav");
+    }
 
-    img.src = img.src.includes("profile10.png")
-      ? "/profile2.png"
-      : "/profile10.png";
-  }
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {});
+
+    setProfileImage((prev) =>
+      prev === "/profile10.png"
+        ? "/profile2.png"
+        : "/profile10.png"
+    );
+  };
 
   return (
     <div
@@ -34,7 +40,6 @@ export default function HeroBanner({ theme }: Props) {
         marginBottom: 90,
       }}
     >
-      {/* Banner Image */}
       <img
         src={imageSrc}
         alt="banner"
@@ -42,12 +47,10 @@ export default function HeroBanner({ theme }: Props) {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "all 0.5s ease",
           borderRadius: 24,
         }}
       />
 
-      {/* Dark Overlay */}
       <div
         style={{
           position: "absolute",
@@ -60,7 +63,6 @@ export default function HeroBanner({ theme }: Props) {
         }}
       />
 
-      {/* Profile Section */}
       <div
         style={{
           position: "absolute",
@@ -69,26 +71,10 @@ export default function HeroBanner({ theme }: Props) {
           zIndex: 20,
         }}
       >
-        {/* Click Me Arrow */}
-        <div
-          style={{
-            position: "absolute",
-            left: "110%",
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#fff",
-            fontSize: 13,
-            fontWeight: 600,
-            whiteSpace: "nowrap",
-            animation: "moveArrow 1s infinite",
-            pointerEvents: "none",
-            textShadow: "0 2px 8px rgba(0,0,0,0.5)",
-          }}
-        >
+        <div className="click-arrow">
           Click Me ➜
         </div>
 
-        {/* Profile Image */}
         <div
           onClick={handleProfileClick}
           style={{
@@ -101,15 +87,13 @@ export default function HeroBanner({ theme }: Props) {
             boxShadow: "0 10px 24px rgba(0,0,0,0.25)",
             animation: "floatOnly 2s ease-in-out infinite",
             background: "#fff",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
           <img
-            id="profile-switch"
-            src="/profile1.png"
+            src={profileImage}
             alt="profile"
             style={{
               width: "100%",
@@ -121,10 +105,24 @@ export default function HeroBanner({ theme }: Props) {
       </div>
 
       <style jsx>{`
+        .click-arrow {
+          position: absolute;
+          left: 110%;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          white-space: nowrap;
+          animation: moveArrow 1s infinite;
+          pointer-events: none;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
         @keyframes moveArrow {
           0%,
           100% {
-            transform: translateY(-50%) translateX(0px);
+            transform: translateY(-50%) translateX(0);
           }
           50% {
             transform: translateY(-50%) translateX(8px);
@@ -134,7 +132,7 @@ export default function HeroBanner({ theme }: Props) {
         @keyframes floatOnly {
           0%,
           100% {
-            transform: translateY(0px);
+            transform: translateY(0);
           }
           50% {
             transform: translateY(-4px);
@@ -142,8 +140,8 @@ export default function HeroBanner({ theme }: Props) {
         }
 
         @media (max-width: 600px) {
-          div[style] {
-            font-size: 12px;
+          .click-arrow {
+            font-size: 11px;
           }
         }
       `}</style>
