@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function HeroBanner({ theme }: Props) {
-  const imageSrc = theme === "dark" ? "/night.png" : "/day.png";
+  const imageSrc = theme === "dark" ? "/night.png" : "/Day.png";
 
   const [profileImage, setProfileImage] = useState("/profile10.png");
 
