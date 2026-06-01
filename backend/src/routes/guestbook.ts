@@ -26,7 +26,7 @@ router.get("/", async (_req, res) => {
     });
 
     res.json(
-      rows.map((row) => ({
+      rows.map((row: any) => ({
         id: row.id,
         name: row.name,
         avatar: row.avatar,
