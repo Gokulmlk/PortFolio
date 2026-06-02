@@ -10,7 +10,7 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/gokul-malik-5631a8272/",
   twitter: "https://twitter.com/yourusername",
   instagram: "https://instagram.com/yourusername",
-  resumeUrl: "#",
+  resumeUrl: "https://drive.google.com/file/d/1P7ZyijqGEiJsMfvXiqQaYCjEYTdUNR7I/view?usp=sharing",
   location: "Hyderabad, India",
   currentFocus: "Building cool products",
 };

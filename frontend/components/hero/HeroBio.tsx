@@ -1,5 +1,7 @@
 "use client";
+
 import { motion } from "framer-motion";
+import StackIcon from "tech-stack-icons";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 18 },
@@ -7,23 +9,35 @@ const fadeUp = (delay = 0) => ({
   transition: { delay, duration: 0.55, ease: "easeOut" as const },
 });
 
-const badgeStyle = {
+const badgeStyle: React.CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
-  gap: 8,
-  padding: "8px 14px",
-  margin: "0 6px",
-  borderRadius: 14,
-  border: "1px dashed var(--border)",
+  gap: 6,
+  padding: "4px 10px",
+  margin: "0 4px",
+  borderRadius: 12,
+  border: "1px solid var(--border)",
   background: "var(--card)",
-  fontWeight: 700,
-  fontSize: 15,
+  verticalAlign: "middle",
+  fontSize: 14,
+  fontWeight: 600,
+  color: "var(--text)",
+};
+
+const iconStyle: React.CSSProperties = {
+  width: 16,
+  height: 16,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transform: "scale(0.75)",
+  flexShrink: 0,
 };
 
 export default function HeroBio() {
   return (
     <>
-      {/* Open to work badge */}
+      {/* Open to Work Badge */}
       <div style={{ marginBottom: 18 }}>
         <span
           style={{
@@ -47,7 +61,7 @@ export default function HeroBio() {
               boxShadow: "0 0 8px var(--green)",
             }}
           />
-          Open to work
+          Open to Work
         </span>
       </div>
 
@@ -60,62 +74,74 @@ export default function HeroBio() {
           lineHeight: 1.08,
           letterSpacing: "-0.045em",
           marginBottom: 24,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
         }}
       >
+        Hi, I'm{" "}
         <span
           style={{
-            display: "flex",
-            alignItems: "baseline",
-            gap: 10,
-            flexWrap: "wrap",
+            textDecoration: "underline",
+            textDecorationColor: "var(--accent)",
+            textUnderlineOffset: 7,
+            textDecorationThickness: 3,
           }}
         >
-          <span>Hi, I'm</span>
-          <span
-            style={{
-              textDecoration: "underline",
-              textDecorationColor: "var(--accent)",
-              textUnderlineOffset: 7,
-              textDecorationThickness: 3,
-            }}
-          >
-            Gokul
-          </span>
+          Gokul
         </span>
 
-        <span
+        <div
           style={{
             color: "var(--accent)",
-            fontSize: "clamp(40px, 3vw, 28px)",
-            marginTop: 10,
-            maxWidth: 900,
+            fontSize: "clamp(22px, 3vw, 32px)",
+            marginTop: 12,
           }}
         >
-          A Full Stack web developer.
-        </span>
+          Full Stack Web Developer
+        </div>
       </motion.h1>
 
-      {/* Bio with tech badges */}
+      {/* Bio */}
       <motion.div
         {...fadeUp(0.15)}
         style={{
           fontSize: 17,
           color: "var(--muted)",
-          lineHeight: 2.2,
+          lineHeight: 2,
           maxWidth: 780,
           marginBottom: 42,
         }}
       >
-        I build modern, interactive web applications using
-        <span style={badgeStyle}>⚡ TypeScript</span>
-        <span style={badgeStyle}>⚛ React</span>
-        <span style={badgeStyle}>▲ Next.js</span>
-        <span style={badgeStyle}>🟢 Node.js</span>
-        <span style={badgeStyle}>🍃 MongoDB</span>
-        with a strong emphasis on clean UI, Performance, and User Experience.
+        I build modern, interactive web applications using{" "}
+        <span style={badgeStyle}>
+          <span style={iconStyle}>
+            <StackIcon name="typescript" />
+          </span>
+          TypeScript
+        </span>
+        <span style={badgeStyle}>
+          <span style={iconStyle}>
+            <StackIcon name="react" />
+          </span>
+          React
+        </span>
+        <span style={badgeStyle}>
+          <span style={iconStyle}>
+            <StackIcon name="nextjs" />
+          </span>
+          Next.js
+        </span>
+        <span style={badgeStyle}>
+          <span style={iconStyle}>
+            <StackIcon name="nodejs" />
+          </span>
+          Node.js
+        </span>
+        <span style={badgeStyle}>
+          <span style={iconStyle}>
+            <StackIcon name="mongodb" />
+          </span>
+          MongoDB
+        </span>{" "}
+        with a strong emphasis on clean UI, performance, and user experience.
       </motion.div>
     </>
   );
