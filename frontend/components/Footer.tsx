@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer style={{
       borderTop: "1px solid var(--border)",
-      padding: "60px 0 40px",
+      padding: "30px 0 20px",
     }}>
       <motion.div
         initial={{ opacity: 0, y: 16 }}

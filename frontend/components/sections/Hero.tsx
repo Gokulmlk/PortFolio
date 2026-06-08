@@ -13,7 +13,7 @@ export default function Hero() {
     <section
       style={{
         minHeight: "100vh",
-        padding: "120px 24px 90px",
+        padding: "120px 24px 30px",
         maxWidth: 900,
         margin: "0 auto",
       }}

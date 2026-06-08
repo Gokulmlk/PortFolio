@@ -4,7 +4,7 @@ import { techStack } from "@/lib/data";
 
 export default function TechStack() {
   return (
-    <section id="work" style={{ padding: "80px 0" }}>
+    <section id="work" style={{ padding: "10px 0" }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
